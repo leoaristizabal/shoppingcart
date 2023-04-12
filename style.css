@@ -86,7 +86,7 @@ header{
     padding-top: 170px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .carts{
@@ -193,4 +193,10 @@ p.author a {
     text-decoration: none;
     font-weight: 700;
     color: #000;
+}
+
+img.palas {
+    max-width: 80%;
+    height: 15rem;
+    object-fit: scale-down;
 }
