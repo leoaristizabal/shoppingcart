@@ -8,7 +8,7 @@
 :root {
     --wh: #fff;
     --gr: #e4e4e8;
-    --blight:#00eaff;
+    --blight:#3887e0;
     --bdark:#014ba0;
     --black: #000000;
 }
@@ -18,7 +18,7 @@ body {
 }
 
 header{
-    background-color: var(--gr);
+    background: linear-gradient(to bottom, var(--bdark), var(--blight));
     padding-top: 18px;
     padding-bottom: 18px;
     box-shadow: 0 7px 8px -3px grey;
@@ -32,18 +32,16 @@ header{
     text-align: center;
     margin: auto;
 }
-.header-section{
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
+/*.header-section{
+   display: flex;
+    justify-content: space-around;
+    margin: 0;
     align-items: center;
     position: relative;
-}
-.header-section div{
-    position: relative;
-}
+}*/
+
 .header-section p{
-    position: absolute;
+    position: relative;
     top: -24px;
     right: -8px;
     background-color: var(--wh);
@@ -53,18 +51,27 @@ header{
     font-weight: 700;
     font-family: system-ui;
     line-height: 18px;
+    opacity: .8;
+    margin-right: 15px;
+    margin-top: 5px;
 }
 .logo{
     margin-top: 5px;
-    width: 148px;
-    height: 76px;
+    width: 120px;
+    height: 70px;
     cursor: pointer;
+    float: left;
 }
 
+.carrito-nav{
+    float: right;
+}
 .cart{
-    margin-top: 5px;
+    margin-right: 10px;
+    margin-top: 10px;
     width: 39px;
     height: 38px;
+    cursor: pointer;
 }
 .cart-products{
     position: absolute!important;
@@ -74,7 +81,8 @@ header{
     padding: 0 18px;
     box-shadow: 0 3px 10px rgb(0 0 0 / 20%);
     display: none;
-    min-width: 290px;
+    min-width: 280px;
+    margin-right: 20px;
 }
 
 .cart:hover{
@@ -83,10 +91,12 @@ header{
 }
 /*end header*/
 .products{
-    padding-top: 170px;
+    padding-top: 2.5rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    margin: 0 auto;
+    max-width: 58rem;
 }
 
 .carts{
@@ -99,10 +109,11 @@ header{
     width: 100%;
 }
 .carts p{
-    font-family: system-ui;
-    font-weight: 500;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 600;
     padding: 0 20px;
     margin-bottom: 24px;
+    word-wrap: break-word;
 }
 .carts div p{
     position: absolute;
@@ -112,6 +123,7 @@ header{
     color: #fff;
     padding: 2px 7px 4px 21px;
     clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+
 }
 .carts div{
     position: relative;
@@ -188,6 +200,7 @@ p.author {
     FONT-VARIANT: JIS04;
     margin-top: 3%;
     gap: 7px;
+    margin-bottom: 8px;
 }
 p.author a {
     text-decoration: none;
@@ -196,7 +209,16 @@ p.author a {
 }
 
 img.palas {
-    max-width: 80%;
-    height: 15rem;
+    margin-bottom: 2px;
+    width: 8rem;
+    height: 10rem;
     object-fit: scale-down;
+}
+
+h1 {
+    color: var(--bdark);
+    padding-top: 9rem;
+    font-family:'Barlow Semi Condensed', sans-serif;  
+    font-weight: 900;
+    font-size: 1.75rem;
 }
