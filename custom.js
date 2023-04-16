@@ -1,7 +1,12 @@
 // Variables
 let allContainerCart = document.querySelector('.products');
 let containerBuyCart = document.querySelector('.card-items');
+let priceTotal = document.querySelector('.price-total');
+let amountProduct = document.querySelector('.count-product');
+
 let buyThings = [];
+let totalCard  = 0;
+let countProduct = 0;
 
 //functions
 loadEventListenrs();
@@ -16,15 +21,29 @@ function addProduct(e){
     if(e.target.classList.contains('btn-add-cart')){
         const selectProduct = e.target.parentElement;
         readTheContent(selectProduct);
-        //console.log(e.target.parentElement);
     }   
 }
 
 function deleteProduct(e){
     if(e.target.classList.contains('delete-product')){
         const deleteId = e.target.getAttribute('data-id');
+
+        buyThings.forEach(value=> {
+            if (value.id == deleteId){
+                let priceReduce = parseFloat(value.price) * parseFloat(value.amount);
+                totalCard = totalCard - priceReduce;
+                totalCard = totalCard.toFixed(2);
+            }
+        });
         buyThings = buyThings.filter(product => product.id !== deleteId)
-    }   
+
+        countProduct++;
+    }  
+    
+    if (buyThings.length === 0) {
+        priceTotal.innerHTML = 0;
+        amountProduct.innerHTML = 0;
+    } 
     loadhtml();
 
 }
@@ -37,9 +56,29 @@ function readTheContent(product){
         id: product.querySelector('a').getAttribute('data-id'),
         amount: 1
     }
-    buyThings = [...buyThings, infoProduct]
+
+    totalCard = parseFloat(totalCard) + parseFloat(infoProduct.price);
+    totalCard = totalCard.toFixed(2);
+
+    const exist = buyThings.some(product => product.id === infoProduct.id);
+    if (exist) {
+        const pro =  buyThings.map(product  => {
+            if (product.id === infoProduct.id){
+                product.amount++;
+                return product;
+            } else {
+                return product
+            }
+
+        });
+        buyThings = [...pro];
+    } else {
+        buyThings = [...buyThings, infoProduct]
+        countProduct++;
+    }
+
     loadhtml();
-    console.log(infoProduct);
+//    console.log(infoProduct);
 }
 
 function loadhtml(){
@@ -58,6 +97,10 @@ function loadhtml(){
             <span class="delete-product" data-id="${id}">X</span>`;
 
             containerBuyCart.appendChild(row);
+
+            priceTotal.innerHTML = totalCard;
+
+            amountProduct.innerHTML = countProduct;
     });
 }
 
