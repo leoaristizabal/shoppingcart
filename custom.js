@@ -35,11 +35,10 @@ function deleteProduct(e){
                 totalCard = totalCard.toFixed(2);
             }
         });
-        buyThings = buyThings.filter(product => product.id !== deleteId)
+        buyThings = buyThings.filter(product => product.id !== deleteId);
 
-        countProduct++;
+        countProduct--;
     }  
-    
     if (buyThings.length === 0) {
         priceTotal.innerHTML = 0;
         amountProduct.innerHTML = 0;
